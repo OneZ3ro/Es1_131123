@@ -28,20 +28,6 @@ public class UtentiController {
         return utenteService.getUtenti(page, size, id);
     }
 
-    @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Utente saveUtente(@RequestBody @Validated UtenteDTO body, BindingResult validation) {
-        if (validation.hasErrors()) {
-            throw new BadRequestException(validation.getAllErrors());
-        } else {
-            try {
-                return utenteService.saveUtente(body);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
     @GetMapping("/{id}")
     public Utente findById(@PathVariable int id) {
         return utenteService.findById(id);
