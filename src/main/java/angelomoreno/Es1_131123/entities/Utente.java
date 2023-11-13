@@ -20,6 +20,7 @@ public class Utente {
     private String nome;
     private String cognome;
     private String email;
+    private String password;
     @OneToMany(mappedBy = "utente")
     @JsonIgnore
     private List<Dispositivo> dispositivi;

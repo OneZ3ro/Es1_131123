@@ -40,6 +40,7 @@ public class UtenteService {
         utente.setNome(body.nome());
         utente.setCognome(body.cognome());
         utente.setEmail(body.email());
+        utente.setPassword(body.password());
         utente.setUrlImg("https://ui-avatars.com/api/?name=" + body.nome() + "+" + body.cognome());
         return utenteRepository.save(utente);
     }
@@ -48,12 +49,17 @@ public class UtenteService {
         return utenteRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
+    public Utente findByEmail(String email) {
+        return utenteRepository.findByEmail(email).orElseThrow(() -> new NotFoundException(email));
+    }
+
     public Utente modificaUtente(int id, Utente body) throws NotFoundException {
          Utente utente = this.findById(id);
          utente.setUsername(body.getUsername());
          utente.setNome(body.getNome());
          utente.setCognome(body.getCognome());
          utente.setEmail(body.getEmail());
+         utente.setPassword(body.getPassword());
          utente.setUrlImg("https://ui-avatars.com/api/?name=" + body.getNome() + "+" + body.getCognome());
          return utenteRepository.save(utente);
     }

@@ -1,6 +1,7 @@
 package angelomoreno.Es1_131123.payloads.entities;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -16,6 +17,9 @@ public record UtenteDTO(
         String cognome,
         @NotEmpty(message = "L'emmail è obbligatorio")
         @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "L'email inserita non è valida")
-        String email
+        String email,
+
+        @NotEmpty(message = "La password è obbligatoria")
+        String password
 //        String urlImg
 ) {}
