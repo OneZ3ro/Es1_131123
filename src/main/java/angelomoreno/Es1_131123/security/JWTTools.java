@@ -31,6 +31,6 @@ public class JWTTools {
     }
 
     public String extractIdFromToken(String token) {
-        return Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(secret.getBytes())).build().parseClaimsJwt(token).getBody().getSubject();
+        return Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(secret.getBytes())).build().parseClaimsJws(token).getBody().getSubject();
     }
 }
